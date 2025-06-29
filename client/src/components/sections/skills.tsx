@@ -6,32 +6,32 @@ import { FaJava, FaCode, FaProjectDiagram, FaDatabase, FaChartLine } from "react
 const skills = [
   {
     name: "Python",
-    description: "Deep Learning, ML, Automation",
+  
     icon: <SiPython className="h-8 w-8" />
   },
   {
     name: "Java",
-    description: "OOP, Backend Development",
+    
     icon: <FaJava className="h-8 w-8" />
   },
   {
     name: "R",
-    description: "Statistical Analysis, Data Science",
+  
     icon: <FaChartLine className="h-8 w-8" />
   },
   {
     name: "OOP",
-    description: "Object-Oriented Programming",
+    
     icon: <FaCode className="h-8 w-8" />
   },
   {
     name: "DSA",
-    description: "Data Structures & Algorithms",
+    
     icon: <FaProjectDiagram className="h-8 w-8" />
   },
   {
     name: "PostgreSQL",
-    description: "Database Management",
+  
     icon: <SiPostgresql className="h-8 w-8" />
   }
 ];

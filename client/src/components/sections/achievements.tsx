@@ -13,7 +13,7 @@ const achievements = [
     ],
     icon: <Code className="h-8 w-8" />,
     color: "blue",
-    link: "#"
+    link: "https://leetcode.com/u/RAGE_BHANU_KIRAN/"
   },
   {
     platform: "HackerRank",
@@ -25,7 +25,7 @@ const achievements = [
     ],
     icon: <Trophy className="h-8 w-8" />,
     color: "green",
-    link: "#"
+    link: "https://www.hackerrank.com/profile/ragebhanukiran"
   }
 ];
 

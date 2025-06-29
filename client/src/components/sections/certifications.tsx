@@ -18,10 +18,17 @@ export function Certifications() {
                   <p className="text-github-text-secondary">Professional Certificate</p>
                 </div>
               </div>
-              <Button variant="link" className="p-0 h-auto text-github-blue hover:text-blue-400">
-                <ExternalLink className="h-4 w-4 mr-2" />
-                View Certificate
-              </Button>
+                <Button variant="link" className="p-0 h-auto text-github-blue hover:text-blue-400" asChild>
+                 <a
+                   href="https://drive.google.com/file/d/1UDkASaRw91PpxnWmlojIS0ej1xbjl-0s/view?usp=sharing"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                 >
+                   <ExternalLink className="h-4 w-4 mr-2" />
+                   View Certificate
+                 </a>
+                </Button>
+
             </CardContent>
           </Card>
         </FadeIn>

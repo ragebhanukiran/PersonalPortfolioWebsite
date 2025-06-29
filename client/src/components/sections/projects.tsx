@@ -12,7 +12,7 @@ const projects = [
     description: "A data extraction tool using Python, Requests, BeautifulSoup, and CSV. Scrapes repository data from GitHub topic pages including usernames, repo names, stars, and URLs.",
     technologies: ["Python", "BeautifulSoup", "CSV"],
     icon: <Github className="h-6 w-6" />,
-    link: "#",
+    link: "https://github.com/ragebhanukiran/Web-Scraping-Project",
     linkText: "View Repository",
     linkIcon: <Github className="h-4 w-4" />,
     color: "blue"
@@ -22,7 +22,7 @@ const projects = [
     description: "Custom object detection model trained on a vehicle dataset (car, emv, htv) using YOLO. Achieved mAP@0.5 of 85.9% with excellent class-wise F1 scores.",
     technologies: ["YOLO", "OpenCV", "Flask"],
     icon: <FaRobot className="h-6 w-6" />,
-    link: "#",
+    link: "https://huggingface.co/ragebhanukiran/Object_Detection_Model_Using_YOLO",
     linkText: "Hugging Face Model",
     linkIcon: <ExternalLink className="h-4 w-4" />,
     color: "purple"
