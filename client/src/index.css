@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(20, 14.3%, 4.1%);
+  --muted: hsl(60, 4.8%, 95.9%);
+  --muted-foreground: hsl(25, 5.3%, 44.7%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(20, 14.3%, 4.1%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(20, 14.3%, 4.1%);
+  --border: hsl(20, 5.9%, 90%);
+  --input: hsl(20, 5.9%, 90%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(60, 4.8%, 95.9%);
+  --secondary-foreground: hsl(24, 9.8%, 10%);
+  --accent: hsl(60, 4.8%, 95.9%);
+  --accent-foreground: hsl(24, 9.8%, 10%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(60, 9.1%, 97.8%);
+  --ring: hsl(20, 14.3%, 4.1%);
+  --radius: 0.5rem;
+
+  /* GitHub-inspired dark theme colors */
+  --github-dark: hsl(220, 26%, 6%);
+  --github-darker: hsl(220, 26%, 9%);
+  --github-card: hsl(220, 26%, 13%);
+  --github-border: hsl(220, 16%, 19%);
+  --github-text: hsl(213, 100%, 97%);
+  --github-text-secondary: hsl(220, 14%, 56%);
+  --github-blue: hsl(212, 100%, 69%);
+  --github-purple: hsl(263, 80%, 57%);
+  --github-green: hsl(137, 100%, 58%);
+}
+
+.dark {
+  --background: hsl(220, 26%, 6%);
+  --foreground: hsl(213, 100%, 97%);
+  --muted: hsl(220, 26%, 13%);
+  --muted-foreground: hsl(220, 14%, 56%);
+  --popover: hsl(220, 26%, 9%);
+  --popover-foreground: hsl(213, 100%, 97%);
+  --card: hsl(220, 26%, 13%);
+  --card-foreground: hsl(213, 100%, 97%);
+  --border: hsl(220, 16%, 19%);
+  --input: hsl(220, 16%, 19%);
+  --primary: hsl(212, 100%, 69%);
+  --primary-foreground: hsl(220, 26%, 6%);
+  --secondary: hsl(220, 26%, 13%);
+  --secondary-foreground: hsl(213, 100%, 97%);
+  --accent: hsl(220, 26%, 13%);
+  --accent-foreground: hsl(213, 100%, 97%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(212, 100%, 69%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-github-dark text-github-text;
+    font-family: 'Inter', sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(212, 100%, 69%), hsl(263, 80%, 57%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-github-dark {
+    background-color: var(--github-dark);
+  }
+
+  .bg-github-darker {
+    background-color: var(--github-darker);
+  }
+
+  .bg-github-card {
+    background-color: var(--github-card);
+  }
+
+  .border-github-border {
+    border-color: var(--github-border);
+  }
+
+  .text-github-text {
+    color: var(--github-text);
+  }
+
+  .text-github-text-secondary {
+    color: var(--github-text-secondary);
+  }
+
+  .text-github-blue {
+    color: var(--github-blue);
+  }
+
+  .text-github-purple {
+    color: var(--github-purple);
+  }
+
+  .text-github-green {
+    color: var(--github-green);
+  }
+
+  .hover\:text-github-blue:hover {
+    color: var(--github-blue);
+  }
+
+  .hover\:border-github-blue:hover {
+    border-color: var(--github-blue);
+  }
+
+  .bg-github-blue {
+    background-color: var(--github-blue);
+  }
+
+  .bg-github-blue\/20 {
+    background-color: hsl(212, 100%, 69%, 0.2);
+  }
+
+  .bg-github-purple\/20 {
+    background-color: hsl(263, 80%, 57%, 0.2);
+  }
+
+  .bg-github-green\/20 {
+    background-color: hsl(137, 100%, 58%, 0.2);
+  }
+}
