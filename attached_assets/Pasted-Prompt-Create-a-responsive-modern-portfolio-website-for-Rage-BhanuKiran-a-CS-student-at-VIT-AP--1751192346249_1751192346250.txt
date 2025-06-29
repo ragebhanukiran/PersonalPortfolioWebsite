@@ -1,0 +1,91 @@
+Prompt:
+Create a responsive, modern portfolio website for Rage BhanuKiran, a CS student at VIT-AP, with the following specifications:
+
+🔹 Header:
+Name: Rage BhanuKiran
+
+Tagline: CS Student at VIT-AP
+
+Navigation menu linking to: About, Projects, Skills, Achievements, Certifications, Contact
+
+🔹 About Me Section:
+Include this paragraph:
+
+I’m Rage BhanuKiran, a passionate Computer Science student at VIT-AP. I enjoy building deep learning and NLP models, and have experience in creating end-to-end object detection systems using YOLO and Faster R-CNN. I actively participate in competitive programming and problem-solving, with strong rankings on platforms like LeetCode and HackerRank. My goal is to apply my skills in real-world applications and continually grow as a software engineer.
+
+🔹 Projects Section (3 Projects):
+Web Scraping Project
+
+Description: A data extraction tool using Python, Requests, BeautifulSoup, and CSV. Scrapes GitHub topic pages for repo info.
+
+GitHub Link: Web Scraping Project
+
+YOLO-Based Object Detection
+
+Description: Custom object detection model trained on a vehicle dataset (car, emv, htv), built using YOLO and deployed with Flask.
+
+Hugging Face Link: YOLO Model
+
+OpenCV Face Recognition System
+
+Description: A real-time face recognition attendance system using OpenCV and Python.
+
+No link yet — leave a placeholder button with “Coming Soon”
+
+🔹 Skills Section:
+List the following skills with icons if possible:
+
+Python
+
+Java
+
+R
+
+Object-Oriented Programming
+
+Data Structures and Algorithms
+
+PostgreSQL
+
+🔹 Certifications Section:
+IBM Professional Certification in Artificial Intelligence
+
+Link: View Certificate
+
+🔹 Achievements Section:
+LeetCode: Solved 250+ problems in Python and Java
+LeetCode Profile
+
+HackerRank:
+
+5 Stars in Python
+
+5 Stars in Problem Solving
+
+4 Stars in Java
+HackerRank Profile
+
+🔹 Contact Section:
+Email: ragebhanukiran@gmail.com
+
+LinkedIn: linkedin.com/in/bhanu-kiran-rage-472368266
+
+GitHub: github.com/ragebhanukiran
+
+Resume: View Resume
+
+Add a basic contact form with name, email, and message (no backend needed for now — just a placeholder).
+
+💡 Design Notes:
+Clean, minimal design using a light or dark theme.
+
+Responsive for mobile and tablet.
+
+Use a modern Google Font like Inter or Poppins.
+
+Optionally use animations (e.g., fade-in on scroll).
+
+Include social media icons in the footer.
+
+Optionally scaffold using React with components for each section.
+
