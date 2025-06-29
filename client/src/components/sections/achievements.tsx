@@ -80,10 +80,21 @@ export function Achievements() {
                       ))}
                     </div>
                     
-                    <Button variant="link" className={`p-0 h-auto text-github-${achievement.color} hover:text-${achievement.color}-400 mt-6`}>
-                      <ExternalLink className="h-4 w-4 mr-2" />
-                      View Profile
+                    <Button
+                      variant="link"
+                      className={`p-0 h-auto text-github-${achievement.color} hover:text-${achievement.color}-400 mt-6`}
+                      asChild
+                    >
+                      <a
+                        href={achievement.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <ExternalLink className="h-4 w-4 mr-2" />
+                        View Profile
+                      </a>
                     </Button>
+
                   </CardContent>
                 </Card>
               </FadeIn>
