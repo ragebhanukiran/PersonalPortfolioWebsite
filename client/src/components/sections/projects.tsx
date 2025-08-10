@@ -2,8 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { FadeIn } from "@/components/ui/fade-in";
-import { ExternalLink, Github, Clock } from "lucide-react";
-import { SiPython, SiOpenai } from "react-icons/si";
+import { ExternalLink, Github } from "lucide-react";
 import { FaRobot, FaUserCheck } from "react-icons/fa";
 
 const projects = [
@@ -32,9 +31,7 @@ const projects = [
     description: "A real-time face recognition attendance system using OpenCV and Python. Uses face biometrics to identify students and automatically generates Excel attendance sheets.",
     technologies: ["Python", "OpenCV", "Excel"],
     icon: <FaUserCheck className="h-6 w-6" />,
-    link: "https://github.com/ragebhanukiran/open-cv-based-face-recognition-system-main",
-    linkText: "View Repository",
-    linkIcon: <Github className="h-4 w-4" />,
+    isComingSoon: true,
     color: "green"
   }
 ];
@@ -56,16 +53,14 @@ export function Projects() {
                       </div>
                       <h3 className="text-xl font-semibold">{project.title}</h3>
                     </div>
-                    
                     <p className="text-github-text-secondary mb-4 flex-grow">
                       {project.description}
                     </p>
-                    
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.technologies.map((tech) => (
-                        <Badge 
-                          key={tech} 
-                          variant="secondary" 
+                        <Badge
+                          key={tech}
+                          variant="secondary"
                           className={`bg-github-${project.color}/20 text-github-${project.color} hover:bg-github-${project.color}/30`}
                         >
                           {tech}
@@ -73,20 +68,27 @@ export function Projects() {
                       ))}
                     </div>
                     
-                    <Button
-                      variant="link"
-                      className={`justify-start p-0 h-auto text-github-${project.color} hover:text-${project.color}-400`}
-                      asChild
-                    >
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {project.linkIcon && <span className="mr-2">{project.linkIcon}</span>}
-                        {project.linkText}
-                      </a>
-                    </Button>
+                    {project.isComingSoon ? (
+                      <Button variant="ghost" disabled className="justify-start p-0 h-auto text-github-text-secondary">
+                        <Clock className="h-4 w-4 mr-2" />
+                        Coming Soon
+                      </Button>
+                    ) : (
+                        <Button
+                        variant="link"
+                        className={`justify-start p-0 h-auto text-github-${project.color} hover:text-${project.color}-400`}
+                        asChild
+                        >
+                         <a
+                            href={project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                         >
+                            {project.linkIcon && <span className="mr-2">{project.linkIcon}</span>}
+                            {project.linkText}
+                          </a>
+                        </Button>
+                    )}
                   </CardContent>
                 </Card>
               </FadeIn>
