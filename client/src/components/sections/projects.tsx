@@ -72,6 +72,38 @@ export function Projects() {
                         </Badge>
                       ))}
                     </div>
+                    {project.isComingSoon ? (
+                          <Button
+                            variant="link"
+                            className={`justify-start p-0 h-auto text-github-${project.color} hover:text-${project.color}-400`}
+                            asChild
+                          >
+                            <a
+                              href="https://github.com/ragebhanukiran/open-cv-based-face-recognition-system-main"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {/* You can optionally add an icon here */}
+                              View Project
+                            </a>
+                          </Button>
+                        ) : (
+                          <Button
+                            variant="link"
+                            className={`justify-start p-0 h-auto text-github-${project.color} hover:text-${project.color}-400`}
+                            asChild
+                          >
+                            <a
+                              href={project.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {project.linkIcon && <span className="mr-2">{project.linkIcon}</span>}
+                              {project.linkText}
+                            </a>
+                          </Button>
+                        )}
+
                   </CardContent>
                 </Card>
               </FadeIn>
