@@ -31,7 +31,9 @@ const projects = [
     description: "A real-time face recognition attendance system using OpenCV and Python. Uses face biometrics to identify students and automatically generates Excel attendance sheets.",
     technologies: ["Python", "OpenCV", "Excel"],
     icon: <FaUserCheck className="h-6 w-6" />,
-    isComingSoon: true,
+    link: "https://github.com/ragebhanukiran/open-cv-based-face-recognition-system-main",
+    linkText: "View Repository",
+    linkIcon: <Github className="h-4 w-4" />,
     color: "green"
   }
 ];
@@ -68,27 +70,20 @@ export function Projects() {
                       ))}
                     </div>
                     
-                    {project.isComingSoon ? (
-                      <Button variant="ghost" disabled className="justify-start p-0 h-auto text-github-text-secondary">
-                        <Clock className="h-4 w-4 mr-2" />
-                        Coming Soon
-                      </Button>
-                    ) : (
-                        <Button
-                        variant="link"
-                        className={`justify-start p-0 h-auto text-github-${project.color} hover:text-${project.color}-400`}
-                        asChild
-                        >
-                         <a
-                            href={project.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                         >
-                            {project.linkIcon && <span className="mr-2">{project.linkIcon}</span>}
-                            {project.linkText}
-                          </a>
-                        </Button>
-                    )}
+                    <Button
+                      variant="link"
+                      className={`justify-start p-0 h-auto text-github-${project.color} hover:text-${project.color}-400`}
+                      asChild
+                    >
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {project.linkIcon && <span className="mr-2">{project.linkIcon}</span>}
+                        {project.linkText}
+                      </a>
+                    </Button>
                   </CardContent>
                 </Card>
               </FadeIn>
