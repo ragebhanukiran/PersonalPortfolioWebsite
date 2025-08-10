@@ -35,7 +35,8 @@ const projects = [
     link: "https://github.com/ragebhanukiran/open-cv-based-face-recognition-system-main",
     linkText: "View Repository",
     linkIcon: <ExternalLink className="h-4 w-4" />,
-    color: "green"
+    color: "green",
+    isComingSoon: true,
   }
 ];
 
