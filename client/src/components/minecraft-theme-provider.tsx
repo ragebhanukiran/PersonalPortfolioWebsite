@@ -18,9 +18,9 @@ export function MinecraftThemeProvider({ children }: { children: ReactNode }) {
   const [isDayMode, setIsDayMode] = useState(() => {
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("mc-theme");
-      return saved ? saved === "day" : true;
+      return saved === "day"; // default to night if no preference saved
     }
-    return true;
+    return false;
   });
 
   useEffect(() => {

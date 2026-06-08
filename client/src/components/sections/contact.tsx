@@ -69,10 +69,18 @@ export function Contact() {
     setSending(true);
 
     try {
-      await emailjs.sendForm(
+      await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
-        formRef.current,
+        {
+          user_name: name,
+          from_name: name,
+          user_email: email,
+          from_email: email,
+          reply_to: email,
+          to_email: "ragebhanukiran@gmail.com",
+          message: message,
+        },
         { publicKey: EMAILJS_PUBLIC_KEY }
       );
 
@@ -81,10 +89,11 @@ export function Contact() {
         description: "Thank you! I'll get back to you soon.",
       });
       formRef.current.reset();
-    } catch (error) {
+    } catch (error: any) {
+      console.error("EmailJS error:", error);
       toast({
         title: "❌ Failed to send",
-        description: "Something went wrong. Please email me directly.",
+        description: error?.text || "Something went wrong. Please email me directly at ragebhanukiran@gmail.com",
         variant: "destructive"
       });
     } finally {
