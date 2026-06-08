@@ -16,10 +16,10 @@ export function Hero() {
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
             <span className="gradient-text">Rage BhanuKiran</span>
           </h1>
-          <p className="text-xl md:text-2xl text-github-text-secondary mb-4">CS Student at VIT-AP</p>
+          <p className="text-xl md:text-2xl text-github-text-secondary mb-4">AI Engineer Intern · CS Student at VIT-AP</p>
           <p className="text-lg text-github-text-secondary mb-8 max-w-3xl mx-auto">
-            Passionate about building deep learning and NLP models with hands-on experience in 
-            real-time applications. Currently interning at DRDO.
+            Building end-to-end LLM pipelines and RAG systems with hands-on experience in 
+            Generative AI, Computer Vision, and NLP. Currently at PharmaACE.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button

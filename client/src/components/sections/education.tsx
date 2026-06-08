@@ -6,7 +6,7 @@ const education = [
     degree: "Bachelor Of Technology",
     institution: "Vellore Institute of Technology, Andhra Pradesh",
     period: "10/2022 - Present",
-    grade: "9.01 CGPA",
+    grade: "CGPA: 9.05 / 10.0",
     field: "Computer Science Engineering"
   },
   {

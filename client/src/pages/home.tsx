@@ -18,7 +18,7 @@ const socialLinks = [
   },
   {
     icon: <Linkedin className="h-5 w-5" />,
-    href: "https://linkedin.com/in/bhanu-kiran-rage-472368266",
+    href: "https://www.linkedin.com/in/bhanu-kiranrage-472368266",
     label: "LinkedIn"
   },
   {
@@ -49,7 +49,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
-              <p className="text-github-text-secondary">&copy; 2024 Rage BhanuKiran. All rights reserved.</p>
+              <p className="text-github-text-secondary">&copy; 2026 Rage BhanuKiran. All rights reserved.</p>
             </div>
             <div className="flex space-x-6">
               {socialLinks.map((link) => (
