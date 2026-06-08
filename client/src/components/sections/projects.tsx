@@ -1,91 +1,81 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { FadeIn } from "@/components/ui/fade-in";
 import { ExternalLink, Github } from "lucide-react";
-import { FaRobot, FaUserCheck } from "react-icons/fa";
 
 const projects = [
   {
     title: "Object Detection Model using YOLO",
-    description: "Trained a YOLO model from scratch on a custom 3-class vehicle dataset (Car, Emergency Vehicle, Heavy Transport Vehicle). Achieved mAP@0.5 of 85.9% with class-wise F1 scores of 0.87, 0.84, and 0.83. Deployed as a REST API using FastAPI for real-time inference.",
+    description: "Trained a YOLO model from scratch on a custom 3-class vehicle dataset. Achieved mAP@0.5 of 85.9%. Deployed as a REST API using FastAPI for real-time inference.",
     technologies: ["Python", "PyTorch", "TensorFlow", "OpenCV", "FastAPI"],
-    icon: <FaRobot className="h-6 w-6" />,
     link: "https://huggingface.co/ragebhanukiran/Object_Detection_Model_Using_YOLO",
-    linkText: "Hugging Face Model",
+    linkText: "Hugging Face",
     linkIcon: <ExternalLink className="h-4 w-4" />,
-    color: "purple"
+    emoji: "🤖"
   },
   {
-    title: "Face Recognition Attendance System",
-    description: "Built a real-time facial biometrics system using OpenCV to automatically identify students and mark attendance, fully eliminating manual roll-call. Automated Excel report generation pipeline, reducing administrative data entry time.",
+    title: "Face Recognition Attendance",
+    description: "Built a real-time facial biometrics system using OpenCV. Automated Excel report generation pipeline, eliminating manual roll-call.",
     technologies: ["Python", "OpenCV", "Excel"],
-    icon: <FaUserCheck className="h-6 w-6" />,
     link: "https://github.com/ragebhanukiran/open-cv-based-face-recognition-system-main",
-    linkText: "View Repository",
+    linkText: "GitHub",
     linkIcon: <Github className="h-4 w-4" />,
-    color: "green"
+    emoji: "👤"
   },
   {
-    title: "GitHub Trending Topics Repository Scraper",
-    description: "Built a web scraper using BeautifulSoup and Requests to automate extraction of top repositories from GitHub topics pages. Collected and structured repository metadata (name, author, stars, URLs) into clean, analysis-ready CSV datasets.",
+    title: "GitHub Trending Scraper",
+    description: "Web scraper using BeautifulSoup to extract top repositories from GitHub topics into analysis-ready CSV datasets.",
     technologies: ["Python", "Requests", "BeautifulSoup", "CSV"],
-    icon: <Github className="h-6 w-6" />,
     link: "https://github.com/ragebhanukiran/Web-Scraping-Project",
-    linkText: "View Repository",
+    linkText: "GitHub",
     linkIcon: <Github className="h-4 w-4" />,
-    color: "blue"
+    emoji: "🔍"
   }
 ];
 
 export function Projects() {
   return (
-    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="relative py-20 px-4 sm:px-6 lg:px-8 mc-section z-10">
       <div className="max-w-6xl mx-auto">
         <FadeIn>
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Featured Projects</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <h2 className="font-pixel text-lg md:text-xl mb-12 text-center text-mc-text">
+            🔨 Featured Projects
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects.map((project, index) => (
               <FadeIn key={project.title} delay={index * 0.1}>
-                <Card className="bg-github-card border-github-border hover:border-github-blue transition-colors duration-200 group h-full">
-                  <CardContent className="p-6 flex flex-col h-full">
-                    <div className="flex items-center mb-4">
-                      <div className={`text-github-${project.color} mr-3`}>
-                        {project.icon}
-                      </div>
-                      <h3 className="text-xl font-semibold">{project.title}</h3>
-                    </div>
-                    <p className="text-github-text-secondary mb-4 flex-grow">
-                      {project.description}
-                    </p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.technologies.map((tech) => (
-                        <Badge
-                          key={tech}
-                          variant="secondary"
-                          className={`bg-github-${project.color}/20 text-github-${project.color} hover:bg-github-${project.color}/30`}
-                        >
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
-                    
-                    <Button
-                      variant="link"
-                      className={`justify-start p-0 h-auto text-github-${project.color} hover:text-${project.color}-400`}
-                      asChild
-                    >
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                <div className="mc-card p-6 h-full flex flex-col">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="text-2xl">{project.emoji}</span>
+                    <h3 className="font-pixel text-[10px] sm:text-xs text-mc-gold leading-relaxed">
+                      {project.title}
+                    </h3>
+                  </div>
+                  <p className="font-minecraft text-lg text-mc-text-secondary mb-4 flex-grow">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="mc-slot px-2 py-1 font-minecraft text-sm text-gray-200"
                       >
-                        {project.linkIcon && <span className="mr-2">{project.linkIcon}</span>}
-                        {project.linkText}
-                      </a>
-                    </Button>
-                  </CardContent>
-                </Card>
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mc-btn !text-[9px] inline-flex items-center gap-2 w-fit"
+                    style={{
+                      background: "linear-gradient(180deg, #4CAF50 0%, #388E3C 40%, #2E7D32 100%)",
+                      borderColor: "#66BB6A #2E7D32 #1B5E20 #4CAF50",
+                    }}
+                  >
+                    {project.linkIcon}
+                    {project.linkText}
+                  </a>
+                </div>
               </FadeIn>
             ))}
           </div>

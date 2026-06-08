@@ -1,76 +1,79 @@
-import { Card, CardContent } from "@/components/ui/card";
 import { FadeIn } from "@/components/ui/fade-in";
-import { SiPython, SiPostgresql, SiPytorch, SiOpencv, SiPandas, SiFastapi } from "react-icons/si";
-import { FaJava, FaCode, FaProjectDiagram, FaBrain, FaAws, FaGitAlt, FaRobot } from "react-icons/fa";
 
 const skillCategories = [
   {
     category: "Languages",
+    emoji: "⌨️",
     skills: [
-      { name: "Python", icon: <SiPython className="h-7 w-7" /> },
-      { name: "Java", icon: <FaJava className="h-7 w-7" /> }
+      { name: "Python", icon: "🐍" },
+      { name: "Java", icon: "☕" }
     ]
   },
   {
     category: "AI / ML",
+    emoji: "🧠",
     skills: [
-      { name: "LLMs", icon: <FaBrain className="h-7 w-7" /> },
-      { name: "RAG", icon: <FaRobot className="h-7 w-7" /> },
-      { name: "Generative AI", icon: <FaBrain className="h-7 w-7" /> },
-      { name: "Computer Vision", icon: <SiOpencv className="h-7 w-7" /> }
+      { name: "LLMs", icon: "💬" },
+      { name: "RAG", icon: "🔗" },
+      { name: "Generative AI", icon: "✨" },
+      { name: "Computer Vision", icon: "👁️" }
     ]
   },
   {
     category: "Frameworks & Libraries",
+    emoji: "📚",
     skills: [
-      { name: "LangChain", icon: <FaBrain className="h-7 w-7" /> },
-      { name: "HF Transformers", icon: <FaRobot className="h-7 w-7" /> },
-      { name: "OpenCV", icon: <SiOpencv className="h-7 w-7" /> },
-      { name: "Pandas", icon: <SiPandas className="h-7 w-7" /> },
-      { name: "FastAPI", icon: <SiFastapi className="h-7 w-7" /> },
-      { name: "PyTorch", icon: <SiPytorch className="h-7 w-7" /> }
+      { name: "LangChain", icon: "🦜" },
+      { name: "HF Transformers", icon: "🤗" },
+      { name: "OpenCV", icon: "📷" },
+      { name: "Pandas", icon: "🐼" },
+      { name: "FastAPI", icon: "⚡" },
+      { name: "PyTorch", icon: "🔥" }
     ]
   },
   {
     category: "Databases & Tools",
+    emoji: "🛠️",
     skills: [
-      { name: "PostgreSQL", icon: <SiPostgresql className="h-7 w-7" /> },
-      { name: "Git & GitHub", icon: <FaGitAlt className="h-7 w-7" /> },
-      { name: "AWS", icon: <FaAws className="h-7 w-7" /> }
+      { name: "PostgreSQL", icon: "🐘" },
+      { name: "Git & GitHub", icon: "🔀" },
+      { name: "AWS", icon: "☁️" }
     ]
   },
   {
     category: "CS Fundamentals",
+    emoji: "🎓",
     skills: [
-      { name: "OOP", icon: <FaCode className="h-7 w-7" /> },
-      { name: "DSA", icon: <FaProjectDiagram className="h-7 w-7" /> }
+      { name: "OOP", icon: "🧱" },
+      { name: "DSA", icon: "📊" }
     ]
   }
 ];
 
 export function Skills() {
   return (
-    <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 bg-github-darker">
+    <section id="skills" className="relative py-20 px-4 sm:px-6 lg:px-8 mc-section-alt z-10">
       <div className="max-w-5xl mx-auto">
         <FadeIn>
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Technical Skills</h2>
-          <div className="space-y-10">
+          <h2 className="font-pixel text-lg md:text-xl mb-12 text-center text-mc-text">
+            🎒 Inventory — Skills
+          </h2>
+          <div className="space-y-8">
             {skillCategories.map((cat, catIndex) => (
-              <FadeIn key={cat.category} delay={catIndex * 0.1}>
+              <FadeIn key={cat.category} delay={catIndex * 0.08}>
                 <div>
-                  <h3 className="text-lg font-semibold text-github-blue mb-4 tracking-wide uppercase">
-                    {cat.category}
+                  <h3 className="font-pixel text-[10px] sm:text-xs text-mc-gold mb-4">
+                    {cat.emoji} {cat.category}
                   </h3>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
                     {cat.skills.map((skill) => (
-                      <Card key={skill.name} className="bg-github-card border-github-border hover:border-github-blue transition-colors duration-200">
-                        <CardContent className="p-4 text-center">
-                          <div className="text-github-blue mb-3 flex justify-center">
-                            {skill.icon}
-                          </div>
-                          <p className="text-sm font-medium text-github-text">{skill.name}</p>
-                        </CardContent>
-                      </Card>
+                      <div
+                        key={skill.name}
+                        className="mc-slot p-3 text-center cursor-default hover:scale-105 transition-transform"
+                      >
+                        <div className="text-2xl mb-2">{skill.icon}</div>
+                        <p className="font-minecraft text-sm text-gray-200">{skill.name}</p>
+                      </div>
                     ))}
                   </div>
                 </div>

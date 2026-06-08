@@ -1,12 +1,8 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
 import { FadeIn } from "@/components/ui/fade-in";
 import { Mail, Linkedin, Github, FileText } from "lucide-react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import emailjs from "@emailjs/browser";
 
 const contactInfo = [
   {
@@ -19,7 +15,7 @@ const contactInfo = [
     icon: <Linkedin className="h-5 w-5" />,
     label: "LinkedIn",
     value: "LinkedIn Profile",
-    href: "https://www.linkedin.com/in/bhanu-kiranrage-472368266"
+    href: "https://www.linkedin.com/in/bhanu-kiran-rage-472368266/"
   },
   {
     icon: <Github className="h-5 w-5" />,
@@ -35,64 +31,87 @@ const contactInfo = [
   }
 ];
 
+// ============================================
+// EmailJS Configuration
+// Replace these with your actual EmailJS credentials:
+// 1. Go to https://www.emailjs.com and sign up
+// 2. Add Gmail service → copy Service ID
+// 3. Create template with {{user_name}}, {{user_email}}, {{message}} → copy Template ID
+// 4. Go to Account → API Keys → copy Public Key
+// ============================================
+const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
+const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
+const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
+
 export function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: ""
-  });
+  const formRef = useRef<HTMLFormElement>(null);
+  const [sending, setSending] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Basic form validation
-    if (!formData.name || !formData.email || !formData.message) {
+    if (!formRef.current) return;
+
+    const formData = new FormData(formRef.current);
+    const name = formData.get("user_name") as string;
+    const email = formData.get("user_email") as string;
+    const message = formData.get("message") as string;
+
+    if (!name || !email || !message) {
       toast({
-        title: "Error",
+        title: "⚠️ Missing fields",
         description: "Please fill in all fields.",
         variant: "destructive"
       });
       return;
     }
 
-    // Simulate form submission
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for your message. I'll get back to you soon!",
-    });
+    setSending(true);
 
-    // Reset form
-    setFormData({ name: "", email: "", message: "" });
-  };
+    try {
+      await emailjs.sendForm(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        { publicKey: EMAILJS_PUBLIC_KEY }
+      );
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
+      toast({
+        title: "✉️ Message Sent!",
+        description: "Thank you! I'll get back to you soon.",
+      });
+      formRef.current.reset();
+    } catch (error) {
+      toast({
+        title: "❌ Failed to send",
+        description: "Something went wrong. Please email me directly.",
+        variant: "destructive"
+      });
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
-    <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-github-darker">
+    <section id="contact" className="relative py-20 px-4 sm:px-6 lg:px-8 mc-section-alt z-10">
       <div className="max-w-4xl mx-auto">
         <FadeIn>
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Get In Touch</h2>
-          <div className="grid md:grid-cols-2 gap-12">
+          <h2 className="font-pixel text-lg md:text-xl mb-12 text-center text-mc-text">
+            📬 Get In Touch
+          </h2>
+          <div className="grid md:grid-cols-2 gap-8">
             {/* Contact Info */}
             <div>
-              <h3 className="text-xl font-semibold mb-6">Contact Information</h3>
+              <h3 className="font-pixel text-[10px] text-mc-gold mb-6">Contact Info</h3>
               <div className="space-y-4">
                 {contactInfo.map((info) => (
-                  <div key={info.label} className="flex items-center">
-                    <div className="text-github-blue mr-4">
-                      {info.icon}
-                    </div>
+                  <div key={info.label} className="flex items-center gap-3">
+                    <span className="text-mc-diamond">{info.icon}</span>
                     <a
                       href={info.href}
-                      target={info.href.startsWith('http') ? '_blank' : undefined}
-                      rel={info.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      className="text-github-text-secondary hover:text-github-blue transition-colors duration-200"
+                      target={info.href.startsWith("http") ? "_blank" : undefined}
+                      rel={info.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                      className="font-minecraft text-lg text-mc-text-secondary hover:text-mc-gold transition-colors"
                     >
                       {info.value}
                     </a>
@@ -103,49 +122,42 @@ export function Contact() {
 
             {/* Contact Form */}
             <div>
-              <h3 className="text-xl font-semibold mb-6">Send a Message</h3>
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <h3 className="font-pixel text-[10px] text-mc-gold mb-6">Send Message</h3>
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <Label htmlFor="name" className="text-github-text-secondary">Name</Label>
-                  <Input
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
+                  <label className="font-minecraft text-lg text-mc-text-secondary block mb-1">Name</label>
+                  <input
+                    type="text"
+                    name="user_name"
                     placeholder="Your Name"
-                    className="bg-github-card border-github-border text-github-text placeholder:text-github-text-secondary focus:border-github-blue"
+                    className="w-full mc-slot p-3 font-minecraft text-lg text-white placeholder:text-gray-500 outline-none focus:ring-2 focus:ring-mc-gold"
                   />
                 </div>
                 <div>
-                  <Label htmlFor="email" className="text-github-text-secondary">Email</Label>
-                  <Input
-                    id="email"
-                    name="email"
+                  <label className="font-minecraft text-lg text-mc-text-secondary block mb-1">Email</label>
+                  <input
                     type="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
+                    name="user_email"
                     placeholder="your.email@example.com"
-                    className="bg-github-card border-github-border text-github-text placeholder:text-github-text-secondary focus:border-github-blue"
+                    className="w-full mc-slot p-3 font-minecraft text-lg text-white placeholder:text-gray-500 outline-none focus:ring-2 focus:ring-mc-gold"
                   />
                 </div>
                 <div>
-                  <Label htmlFor="message" className="text-github-text-secondary">Message</Label>
-                  <Textarea
-                    id="message"
+                  <label className="font-minecraft text-lg text-mc-text-secondary block mb-1">Message</label>
+                  <textarea
                     name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
                     rows={4}
                     placeholder="Your message..."
-                    className="bg-github-card border-github-border text-github-text placeholder:text-github-text-secondary focus:border-github-blue resize-none"
+                    className="w-full mc-slot p-3 font-minecraft text-lg text-white placeholder:text-gray-500 outline-none focus:ring-2 focus:ring-mc-gold resize-none"
                   />
                 </div>
-                <Button
+                <button
                   type="submit"
-                  className="w-full bg-github-blue text-github-dark hover:bg-blue-400"
+                  disabled={sending}
+                  className="mc-btn w-full !text-xs disabled:opacity-50"
                 >
-                  Send Message
-                </Button>
+                  {sending ? "⏳ Sending..." : "📨 Send Message"}
+                </button>
               </form>
             </div>
           </div>

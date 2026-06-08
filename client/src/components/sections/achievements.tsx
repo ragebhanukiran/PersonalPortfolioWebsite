@@ -1,18 +1,15 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { FadeIn } from "@/components/ui/fade-in";
-import { Code, Trophy, ExternalLink, Star } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 
 const achievements = [
   {
     platform: "LeetCode",
     description: "Competitive Programming",
     stats: [
-      { label: "Problems Solved", value: "250+" },
+      { label: "Problems Solved", value: "400+" },
       { label: "Languages", value: "Python, Java" }
     ],
-    icon: <Code className="h-8 w-8" />,
-    color: "blue",
+    emoji: "💻",
     link: "https://leetcode.com/u/RAGE_BHANU_KIRAN/"
   },
   {
@@ -23,22 +20,22 @@ const achievements = [
       { label: "Problem Solving", stars: 5 },
       { label: "Java", stars: 4 }
     ],
-    icon: <Trophy className="h-8 w-8" />,
-    color: "green",
+    emoji: "🏆",
     link: "https://www.hackerrank.com/profile/ragebhanukiran"
   }
 ];
 
-function StarRating({ count }: { count: number }) {
+function McStars({ count }: { count: number }) {
   return (
-    <div className="flex">
+    <div className="flex gap-1">
       {Array.from({ length: 5 }, (_, i) => (
-        <Star
+        <span
           key={i}
-          className={`h-4 w-4 ${
-            i < count ? "text-github-green fill-current" : "text-github-text-secondary"
-          }`}
-        />
+          className={`text-lg ${i < count ? "opacity-100" : "opacity-30"}`}
+          style={i < count ? { animation: "xpGlow 2s ease-in-out infinite", animationDelay: `${i * 0.2}s` } : {}}
+        >
+          ⭐
+        </span>
       ))}
     </div>
   );
@@ -46,57 +43,47 @@ function StarRating({ count }: { count: number }) {
 
 export function Achievements() {
   return (
-    <section id="achievements" className="py-20 px-4 sm:px-6 lg:px-8">
+    <section id="achievements" className="relative py-20 px-4 sm:px-6 lg:px-8 mc-section-alt z-10">
       <div className="max-w-6xl mx-auto">
         <FadeIn>
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Achievements</h2>
+          <h2 className="font-pixel text-lg md:text-xl mb-12 text-center text-mc-text">
+            🏅 Achievements
+          </h2>
           <div className="grid md:grid-cols-2 gap-8">
             {achievements.map((achievement, index) => (
               <FadeIn key={achievement.platform} delay={index * 0.1}>
-                <Card className="bg-github-card border-github-border hover:border-github-blue transition-colors duration-200">
-                  <CardContent className="p-8">
-                    <div className="flex items-center mb-6">
-                      <div className={`text-github-${achievement.color} mr-4`}>
-                        {achievement.icon}
-                      </div>
-                      <div>
-                        <h3 className="text-2xl font-semibold">{achievement.platform}</h3>
-                        <p className="text-github-text-secondary">{achievement.description}</p>
-                      </div>
+                <div className="mc-card p-6 md:p-8">
+                  <div className="flex items-center gap-4 mb-6">
+                    <span className="text-3xl">{achievement.emoji}</span>
+                    <div>
+                      <h3 className="font-pixel text-xs sm:text-sm text-mc-gold">{achievement.platform}</h3>
+                      <p className="font-minecraft text-lg text-mc-text-secondary">{achievement.description}</p>
                     </div>
-                    
-                    <div className="space-y-4">
-                      {achievement.stats.map((stat) => (
-                        <div key={stat.label} className="flex items-center justify-between">
-                          <span className="text-github-text-secondary">{stat.label}</span>
-                          {'stars' in stat ? (
-                            <StarRating count={stat.stars} />
-                          ) : (
-                            <span className={`text-2xl font-bold text-github-${achievement.color}`}>
-                              {stat.value}
-                            </span>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                    
-                    <Button
-                      variant="link"
-                      className={`p-0 h-auto text-github-${achievement.color} hover:text-${achievement.color}-400 mt-6`}
-                      asChild
-                    >
-                      <a
-                        href={achievement.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <ExternalLink className="h-4 w-4 mr-2" />
-                        View Profile
-                      </a>
-                    </Button>
+                  </div>
 
-                  </CardContent>
-                </Card>
+                  <div className="space-y-4">
+                    {achievement.stats.map((stat) => (
+                      <div key={stat.label} className="flex items-center justify-between">
+                        <span className="font-minecraft text-lg text-mc-text-secondary">{stat.label}</span>
+                        {'stars' in stat ? (
+                          <McStars count={stat.stars} />
+                        ) : (
+                          <span className="font-pixel text-sm text-mc-diamond">{stat.value}</span>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+
+                  <a
+                    href={achievement.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mc-btn !text-[9px] inline-flex items-center gap-2 mt-6"
+                  >
+                    <ExternalLink className="h-3 w-3" />
+                    View Profile
+                  </a>
+                </div>
               </FadeIn>
             ))}
           </div>

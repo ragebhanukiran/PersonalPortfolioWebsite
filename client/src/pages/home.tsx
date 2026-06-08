@@ -1,3 +1,4 @@
+import { Github, Linkedin, Mail } from "lucide-react";
 import { Navbar } from "@/components/navigation/navbar";
 import { Hero } from "@/components/sections/hero";
 import { About } from "@/components/sections/about";
@@ -8,7 +9,7 @@ import { Education } from "@/components/sections/education";
 import { Certifications } from "@/components/sections/certifications";
 import { Achievements } from "@/components/sections/achievements";
 import { Contact } from "@/components/sections/contact";
-import { Mail, Linkedin, Github } from "lucide-react";
+import { MinecraftScene, GrassDivider } from "@/components/minecraft-scene";
 
 const socialLinks = [
   {
@@ -18,7 +19,7 @@ const socialLinks = [
   },
   {
     icon: <Linkedin className="h-5 w-5" />,
-    href: "https://www.linkedin.com/in/bhanu-kiranrage-472368266",
+    href: "https://www.linkedin.com/in/bhanu-kiran-rage-472368266/",
     label: "LinkedIn"
   },
   {
@@ -30,35 +31,52 @@ const socialLinks = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-github-dark">
+    <div className="min-h-screen relative">
+      {/* Background Scene (fixed, behind everything) */}
+      <MinecraftScene />
+
+      {/* Content */}
       <Navbar />
-      <main>
+      <main className="relative z-10">
         <Hero />
+        <GrassDivider />
         <About />
+        <GrassDivider />
         <Experience />
+        <GrassDivider />
         <Projects />
+        <GrassDivider />
         <Skills />
+        <GrassDivider />
         <Education />
+        <GrassDivider />
         <Certifications />
+        <GrassDivider />
         <Achievements />
+        <GrassDivider />
         <Contact />
       </main>
       
-      {/* Footer */}
-      <footer className="py-12 px-4 sm:px-6 lg:px-8 border-t border-github-border">
+      {/* Footer — Bedrock Layer */}
+      <footer className="relative z-10 py-10 px-4 sm:px-6 lg:px-8" style={{
+        background: "repeating-linear-gradient(0deg, #333 0px, #333 4px, #2a2a2a 4px, #2a2a2a 8px, #444 8px, #444 12px, #2a2a2a 12px, #2a2a2a 16px)",
+        borderTop: "4px solid var(--mc-border)"
+      }}>
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
-              <p className="text-github-text-secondary">&copy; 2026 Rage BhanuKiran. All rights reserved.</p>
+              <p className="font-minecraft text-lg text-gray-400">
+                &copy; 2026 Rage BhanuKiran. All rights reserved. ⛏️
+              </p>
             </div>
             <div className="flex space-x-6">
               {socialLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
-                  target={link.href.startsWith('http') ? '_blank' : undefined}
-                  rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="text-github-text-secondary hover:text-github-blue transition-colors duration-200"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-500 hover:text-mc-gold transition-colors duration-200"
                   aria-label={link.label}
                 >
                   {link.icon}

@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { FadeIn } from "@/components/ui/fade-in";
 
 export function Hero() {
@@ -10,31 +9,36 @@ export function Hero() {
   };
 
   return (
-    <section className="pt-24 pb-20 px-4 sm:px-6 lg:px-8">
+    <section className="relative pt-28 pb-24 px-4 sm:px-6 lg:px-8 z-10">
       <div className="max-w-6xl mx-auto text-center">
         <FadeIn>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            <span className="gradient-text">Rage BhanuKiran</span>
+          <h1 className="font-pixel text-2xl sm:text-3xl md:text-4xl mb-6 leading-relaxed">
+            <span className="mc-gradient-text">Rage BhanuKiran</span>
           </h1>
-          <p className="text-xl md:text-2xl text-github-text-secondary mb-4">AI Engineer Intern · CS Student at VIT-AP</p>
-          <p className="text-lg text-github-text-secondary mb-8 max-w-3xl mx-auto">
-            Building end-to-end LLM pipelines and RAG systems with hands-on experience in 
-            Generative AI, Computer Vision, and NLP. Currently at PharmaACE.
+          <p className="font-minecraft text-2xl md:text-3xl text-mc-text-secondary mb-3">
+            ⚡ AI Engineer Intern · CS Student at VIT-AP
+          </p>
+          <p className="font-minecraft text-xl text-mc-text-secondary mb-10 max-w-3xl mx-auto leading-relaxed">
+            Building end-to-end LLM pipelines and RAG systems with hands-on experience in
+            Generative AI, Computer Vision, and NLP. Currently at PharmaACE. 🐷
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
+            <button
               onClick={() => handleScrollTo("#projects")}
-              className="bg-github-blue text-github-dark hover:bg-blue-400 px-8 py-3"
+              className="mc-btn text-sm px-8 py-3"
             >
-              View My Work
-            </Button>
-            <Button
-              variant="outline"
+              ⛏️ View My Work
+            </button>
+            <button
               onClick={() => handleScrollTo("#contact")}
-              className="border-github-border text-github-text hover:border-github-blue hover:text-github-blue px-8 py-3"
+              className="mc-btn text-sm px-8 py-3"
+              style={{
+                background: "linear-gradient(180deg, #4CAF50 0%, #388E3C 40%, #2E7D32 100%)",
+                borderColor: "#66BB6A #2E7D32 #1B5E20 #4CAF50",
+              }}
             >
-              Get In Touch
-            </Button>
+              📬 Get In Touch
+            </button>
           </div>
         </FadeIn>
       </div>

@@ -10,6 +10,10 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      fontFamily: {
+        pixel: ['"Press Start 2P"', 'monospace'],
+        minecraft: ['"VT323"', 'monospace'],
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
@@ -44,6 +48,30 @@ export default {
         border: "var(--border)",
         input: "var(--input)",
         ring: "var(--ring)",
+        mc: {
+          sky: "var(--mc-sky)",
+          grass: "var(--mc-grass)",
+          "grass-light": "var(--mc-grass-light)",
+          dirt: "var(--mc-dirt)",
+          stone: "var(--mc-stone)",
+          "stone-light": "var(--mc-stone-light)",
+          wood: "var(--mc-wood)",
+          "wood-light": "var(--mc-wood-light)",
+          text: "var(--mc-text)",
+          "text-secondary": "var(--mc-text-secondary)",
+          card: "var(--mc-card)",
+          "card-darker": "var(--mc-card-darker)",
+          border: "var(--mc-border)",
+          "border-light": "var(--mc-border-light)",
+          accent: "var(--mc-accent)",
+          "accent-light": "var(--mc-accent-light)",
+          gold: "var(--mc-gold)",
+          "gold-dark": "var(--mc-gold-dark)",
+          diamond: "var(--mc-diamond)",
+          redstone: "var(--mc-redstone)",
+          bg: "var(--mc-bg)",
+          "bg-alt": "var(--mc-bg-alt)",
+        },
         chart: {
           "1": "var(--chart-1)",
           "2": "var(--chart-2)",
@@ -64,20 +92,12 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
       },
       animation: {
