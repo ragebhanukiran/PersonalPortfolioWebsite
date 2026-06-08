@@ -39,9 +39,9 @@ const contactInfo = [
 // 3. Create template with {{user_name}}, {{user_email}}, {{message}} → copy Template ID
 // 4. Go to Account → API Keys → copy Public Key
 // ============================================
-const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
-const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
-const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
+const EMAILJS_SERVICE_ID = "service_ot0z6l6";
+const EMAILJS_TEMPLATE_ID = "template_ygj4stm";
+const EMAILJS_PUBLIC_KEY = "xu-ZAFTaQt-wdLlj9";
 
 export function Contact() {
   const formRef = useRef<HTMLFormElement>(null);
