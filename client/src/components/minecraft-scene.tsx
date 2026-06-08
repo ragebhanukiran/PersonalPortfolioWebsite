@@ -207,79 +207,85 @@ export function MinecraftScene() {
   const { isDayMode } = useMinecraftTheme();
 
   return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden z-0" aria-hidden>
-      {/* Sky gradient */}
-      <div
-        className="absolute inset-0 transition-all duration-1000"
-        style={{
-          background: `linear-gradient(180deg, var(--mc-sky) 0%, var(--mc-sky-bottom) 70%, var(--mc-bg) 100%)`,
-        }}
-      />
+    <>
+      {/* Background layer — sky, stars, clouds, sun/moon (z-0, behind content) */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0" aria-hidden>
+        {/* Sky gradient */}
+        <div
+          className="absolute inset-0 transition-all duration-1000"
+          style={{
+            background: `linear-gradient(180deg, var(--mc-sky) 0%, var(--mc-sky-bottom) 70%, var(--mc-bg) 100%)`,
+          }}
+        />
 
-      {/* Stars (night only) */}
-      <Stars />
+        {/* Stars (night only) */}
+        <Stars />
 
-      {/* Clouds */}
-      <PixelCloud delay={0} top={30} />
-      <PixelCloud delay={1} top={60} />
-      <PixelCloud delay={2} top={90} />
-      <PixelCloud delay={3} top={45} />
+        {/* Clouds */}
+        <PixelCloud delay={0} top={30} />
+        <PixelCloud delay={1} top={60} />
+        <PixelCloud delay={2} top={90} />
+        <PixelCloud delay={3} top={45} />
 
-      {/* Sun/Moon */}
-      <div className="absolute top-16 right-[15%]">
-        <AnimatePresence mode="wait">
-          {isDayMode ? (
-            <motion.div
-              key="sun"
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -30, opacity: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <PixelSun />
-            </motion.div>
-          ) : (
-            <motion.div
-              key="moon"
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -30, opacity: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <PixelMoon />
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-
-      {/* Trees on edges */}
-      <div className="absolute bottom-0 left-[5%] hidden md:block">
-        <PixelTree />
-      </div>
-      <div className="absolute bottom-0 right-[8%] hidden md:block">
-        <PixelTree style={{ transform: "scaleX(-1)" }} />
-      </div>
-      <div className="absolute bottom-0 left-[20%] hidden lg:block">
-        <PixelTree style={{ opacity: 0.6, transform: "scale(0.7)" }} />
-      </div>
-
-      {/* Walking Pig */}
-      <div className="absolute bottom-4 mc-pig">
-        <PixelPig />
-      </div>
-
-      {/* Walking Steve */}
-      <div
-        className="absolute bottom-2"
-        style={{
-          animation: "steveWalk 28s linear infinite",
-        }}
-      >
-        <div style={{ animation: "steveBob 0.5s ease-in-out infinite" }}>
-          <PixelSteve />
+        {/* Sun/Moon */}
+        <div className="absolute top-16 right-[15%]">
+          <AnimatePresence mode="wait">
+            {isDayMode ? (
+              <motion.div
+                key="sun"
+                initial={{ y: 30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -30, opacity: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <PixelSun />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="moon"
+                initial={{ y: 30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -30, opacity: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <PixelMoon />
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
-    </div>
+
+      {/* Character overlay — walks in FRONT of all content (z-50) */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden z-50" aria-hidden>
+        {/* Trees on edges */}
+        <div className="absolute bottom-0 left-[5%] hidden md:block">
+          <PixelTree />
+        </div>
+        <div className="absolute bottom-0 right-[8%] hidden md:block">
+          <PixelTree style={{ transform: "scaleX(-1)" }} />
+        </div>
+        <div className="absolute bottom-0 left-[20%] hidden lg:block">
+          <PixelTree style={{ opacity: 0.6, transform: "scale(0.7)" }} />
+        </div>
+
+        {/* Walking Pig */}
+        <div className="absolute bottom-4 mc-pig">
+          <PixelPig />
+        </div>
+
+        {/* Walking Steve */}
+        <div
+          className="absolute bottom-2"
+          style={{
+            animation: "steveWalk 28s linear infinite",
+          }}
+        >
+          <div style={{ animation: "steveBob 0.5s ease-in-out infinite" }}>
+            <PixelSteve />
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
