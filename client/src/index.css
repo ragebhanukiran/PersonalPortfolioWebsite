@@ -275,6 +275,21 @@ html.night {
   50% { box-shadow: 0 0 12px #7FFF00, 0 0 24px #7FFF00, 0 0 36px #7FFF00; }
 }
 
+/* Steve walking (opposite direction from pig, slightly slower) */
+@keyframes steveWalk {
+  0% { transform: translateX(calc(100vw + 80px)) scaleX(-1); }
+  49% { transform: translateX(-120px) scaleX(-1); }
+  50% { transform: translateX(-120px) scaleX(1); }
+  99% { transform: translateX(calc(100vw + 80px)) scaleX(1); }
+  100% { transform: translateX(calc(100vw + 80px)) scaleX(-1); }
+}
+
+/* Steve subtle bob while walking */
+@keyframes steveBob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
 /* ===== PIXEL CHARACTER STYLES ===== */
 
 .pixel-art {

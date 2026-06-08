@@ -77,6 +77,46 @@ function PixelPig() {
   );
 }
 
+function PixelSteve() {
+  return (
+    <div style={{ width: 64, height: 96 }}>
+      <svg width="64" height="96" viewBox="0 0 8 12" className="pixel-art" style={{ imageRendering: "pixelated" }}>
+        {/* Hair */}
+        <rect x="0" y="0" width="8" height="1" fill="#3C2415" />
+        <rect x="0" y="1" width="1" height="2" fill="#3C2415" />
+        <rect x="7" y="1" width="1" height="1" fill="#3C2415" />
+        {/* Head / Face */}
+        <rect x="1" y="1" width="6" height="3" fill="#C49A6C" />
+        {/* Eyes */}
+        <rect x="2" y="2" width="1" height="1" fill="#fff" />
+        <rect x="5" y="2" width="1" height="1" fill="#fff" />
+        <rect x="2" y="2" width="1" height="1" fill="#4040CF" opacity="0.7" />
+        <rect x="5" y="2" width="1" height="1" fill="#4040CF" opacity="0.7" />
+        {/* Mouth */}
+        <rect x="3" y="3" width="2" height="1" fill="#8B5E3C" />
+        {/* T-shirt (teal) */}
+        <rect x="0" y="4" width="8" height="3" fill="#00AAAA" />
+        <rect x="0" y="4" width="2" height="3" fill="#00AAAA" />
+        <rect x="6" y="4" width="2" height="3" fill="#00AAAA" />
+        {/* Shirt center detail */}
+        <rect x="3" y="4" width="2" height="1" fill="#009999" />
+        <rect x="3" y="5" width="2" height="1" fill="#008888" />
+        {/* Arms (skin) */}
+        <rect x="0" y="4" width="1" height="1" fill="#C49A6C" />
+        <rect x="7" y="4" width="1" height="1" fill="#C49A6C" />
+        {/* Pants (blue jeans) */}
+        <rect x="1" y="7" width="3" height="3" fill="#3535AC" />
+        <rect x="4" y="7" width="3" height="3" fill="#2D2D96" />
+        {/* Belt */}
+        <rect x="1" y="7" width="6" height="1" fill="#4A4A4A" />
+        {/* Shoes */}
+        <rect x="1" y="10" width="3" height="2" fill="#555" />
+        <rect x="4" y="10" width="3" height="2" fill="#444" />
+      </svg>
+    </div>
+  );
+}
+
 function PixelTree({ style }: { style?: React.CSSProperties }) {
   return (
     <div style={{ width: 56, height: 80, ...style }}>
@@ -226,6 +266,18 @@ export function MinecraftScene() {
       {/* Walking Pig */}
       <div className="absolute bottom-4 mc-pig">
         <PixelPig />
+      </div>
+
+      {/* Walking Steve */}
+      <div
+        className="absolute bottom-2"
+        style={{
+          animation: "steveWalk 28s linear infinite",
+        }}
+      >
+        <div style={{ animation: "steveBob 0.5s ease-in-out infinite" }}>
+          <PixelSteve />
+        </div>
       </div>
     </div>
   );
