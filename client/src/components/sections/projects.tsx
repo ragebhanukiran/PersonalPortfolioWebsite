@@ -7,19 +7,9 @@ import { FaRobot, FaUserCheck } from "react-icons/fa";
 
 const projects = [
   {
-    title: "GitHub Topic Repository Scraper",
-    description: "A data extraction tool using Python, Requests, BeautifulSoup, and CSV. Scrapes repository data from GitHub topic pages including usernames, repo names, stars, and URLs.",
-    technologies: ["Python", "BeautifulSoup", "CSV"],
-    icon: <Github className="h-6 w-6" />,
-    link: "https://github.com/ragebhanukiran/Web-Scraping-Project",
-    linkText: "View Repository",
-    linkIcon: <Github className="h-4 w-4" />,
-    color: "blue"
-  },
-  {
-    title: "YOLO-Based Object Detection",
-    description: "Custom object detection model trained on a vehicle dataset (car, emv, htv) using YOLO. Achieved mAP@0.5 of 85.9% with excellent class-wise F1 scores.",
-    technologies: ["YOLO", "OpenCV", "Flask"],
+    title: "Object Detection Model using YOLO",
+    description: "Trained a YOLO model from scratch on a custom 3-class vehicle dataset (Car, Emergency Vehicle, Heavy Transport Vehicle). Achieved mAP@0.5 of 85.9% with class-wise F1 scores of 0.87, 0.84, and 0.83. Deployed as a REST API using FastAPI for real-time inference.",
+    technologies: ["Python", "PyTorch", "TensorFlow", "OpenCV", "FastAPI"],
     icon: <FaRobot className="h-6 w-6" />,
     link: "https://huggingface.co/ragebhanukiran/Object_Detection_Model_Using_YOLO",
     linkText: "Hugging Face Model",
@@ -27,14 +17,24 @@ const projects = [
     color: "purple"
   },
   {
-    title: "OpenCV Face Recognition System",
-    description: "A real-time face recognition attendance system using OpenCV and Python. Uses face biometrics to identify students and automatically generates Excel attendance sheets.",
+    title: "Face Recognition Attendance System",
+    description: "Built a real-time facial biometrics system using OpenCV to automatically identify students and mark attendance, fully eliminating manual roll-call. Automated Excel report generation pipeline, reducing administrative data entry time.",
     technologies: ["Python", "OpenCV", "Excel"],
     icon: <FaUserCheck className="h-6 w-6" />,
     link: "https://github.com/ragebhanukiran/open-cv-based-face-recognition-system-main",
     linkText: "View Repository",
     linkIcon: <Github className="h-4 w-4" />,
     color: "green"
+  },
+  {
+    title: "GitHub Trending Topics Repository Scraper",
+    description: "Built a web scraper using BeautifulSoup and Requests to automate extraction of top repositories from GitHub topics pages. Collected and structured repository metadata (name, author, stars, URLs) into clean, analysis-ready CSV datasets.",
+    technologies: ["Python", "Requests", "BeautifulSoup", "CSV"],
+    icon: <Github className="h-6 w-6" />,
+    link: "https://github.com/ragebhanukiran/Web-Scraping-Project",
+    linkText: "View Repository",
+    linkIcon: <Github className="h-4 w-4" />,
+    color: "blue"
   }
 ];
 

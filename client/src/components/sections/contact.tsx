@@ -19,7 +19,7 @@ const contactInfo = [
     icon: <Linkedin className="h-5 w-5" />,
     label: "LinkedIn",
     value: "LinkedIn Profile",
-    href: "https://linkedin.com/in/bhanu-kiran-rage-472368266"
+    href: "https://www.linkedin.com/in/bhanu-kiranrage-472368266"
   },
   {
     icon: <Github className="h-5 w-5" />,
